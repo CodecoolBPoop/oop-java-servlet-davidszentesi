@@ -3,6 +3,7 @@ package com.codecool.servlet;
 public class Item {
 
     private static int id = 0;
+    private int uid;
     private String name;
     private double price;
 
@@ -12,12 +13,12 @@ public class Item {
         setPrice(price);
     }
 
-    public static int getId() {
-        return id;
+    public int getId() {
+        return uid;
     }
 
-    public static void setId(int id) {
-        Item.id = id;
+    public void setId(int id) {
+        this.uid = id;
     }
 
     public String getName() {
