@@ -34,7 +34,7 @@ public class ShoppingCartServlet extends HttpServlet {
 
         out.println(
                 "</ul>\n" +
-                "<div><h2>Sum of Price:" + sumPrice + "</h2></div>" +
+                "<div>Sum of Price:" + sumPrice + "</div>" +
                 "<div><a href=/webshop>Back to the Shop</a></div>" +
                 "</body></html>"
         );
