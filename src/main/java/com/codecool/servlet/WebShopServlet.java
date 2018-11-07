@@ -38,13 +38,31 @@ public class WebShopServlet extends HttpServlet {
 
         for (Item item : availableItems) {
             out.println(
-                "<li><b>" + item.getId() + "-" + item.getName() + "-" + item.getPrice() +"</b>\n");
+                "<li><b>" + item.getId() + " - " + item.getName() + " - " + item.getPrice() +"</b>" + " - " +
+                "<a href=/webshop?itemid-add=" + item.getId() + ">Add</a>" + " - " +
+                "<a href=/webshop?itemid-remove=" + item.getId() + ">Remove</a>" +
+                "\n");
         }
 
         out.println(
                 "</ul>\n" +
+                "<div><a href=\"/shopping-cart\">Check Shopping Cart</a></div>" +
                 "</body></html>"
                 );
+
+
+        String itemToShoppingCart = request.getParameter("itemid-add");
+        String removeItemFromShoppingCart = request.getParameter("itemid-remove");
+
+        if (itemToShoppingCart != null) {
+            int itemToShoppingCartId = Integer.parseInt(itemToShoppingCart);
+            ItemStore.add(availableItems.get(itemToShoppingCartId));
+        }
+
+        if (removeItemFromShoppingCart != null) {
+            int removeItemFromShoppingCartId = Integer.parseInt(removeItemFromShoppingCart);
+            ItemStore.remove(availableItems.get(removeItemFromShoppingCartId));
+        }
 
     }
 
